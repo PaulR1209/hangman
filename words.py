@@ -1,0 +1,1 @@
+list_of_words = ['people', 'should', 'system', 'number', 'public', 'design', 'before', 'school', 'review', 'report']
