@@ -19,14 +19,19 @@ def splash_screen():
                                                                 
     """)
 
-    options = input('Press 1 to start game. Press 2 for instructions.')
-    if options == '1':
-        pass
-    elif options == '2':
-        clear_screen()
-        return instructions()
+    options = input('Press 1 to start game. Press 2 for instructions: ')
+
+    if options.isdigit():
+        choice = int(options)
+        if choice == '1':
+            pass
+        elif options == '2':
+            clear_screen()
+            return instructions()
+        else:
+         print('Invalid input. Press 1 to start, or press 2 for instructions.')
     else:
-         print('Invalid input. Press 1 to start, or press 2 for instructions')      
+        print('Invalid input. Please enter a number (1 or 2)')          
 
 def instructions():
     """
@@ -39,13 +44,20 @@ def instructions():
     print('Start guessing letters when prompted')
     print('Choose your letters wisely, you have 7 lives!\n')
     print('The game ends when you either guess the correct word or you run out of lives.\n')
+
+    back = input('Press 1 to go back to menu: ')
+    if back == '1':
+        clear_screen()
+        return splash_screen()
+    else:
+        print('Invalid input. Press 1 to go back to menu.')        
     
 def get_word():
     """
     Generates a random word from the list_of_words.
     """
     word = random.choice(list_of_words)
-    return word           
+    return word               
 
 def main():
     splash_screen()
