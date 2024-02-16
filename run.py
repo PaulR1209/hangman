@@ -1,6 +1,18 @@
 import random
 import os
 from words import list_of_words
+from ascii import splash_screen
+from ascii import hangman_stages
+
+def get_word():
+    """
+    Generates a random word from the list_of_words.
+    """
+    word = random.choice(list_of_words)
+    return word
+
+lives = 7
+guessed_letters = ''
 
 def clear_screen():
     """
@@ -8,35 +20,24 @@ def clear_screen():
     """
     os.system('cls' if os.name == 'nt' else 'clear')
 
-def splash_screen():
-    print(r"""
-    
-██   ██  █████  ███    ██  ██████  ███    ███  █████  ███    ██ 
-██   ██ ██   ██ ████   ██ ██       ████  ████ ██   ██ ████   ██ 
-███████ ███████ ██ ██  ██ ██   ███ ██ ████ ██ ███████ ██ ██  ██ 
-██   ██ ██   ██ ██  ██ ██ ██    ██ ██  ██  ██ ██   ██ ██  ██ ██ 
-██   ██ ██   ██ ██   ████  ██████  ██      ██ ██   ██ ██   ████ 
-                                                                
-    """)
+def main_menu():
+
+    print(splash_screen)
 
     while True:
         try:
             options = int(input('Press 1 to start game. Press 2 for instructions: '))
-            clear_screen()
+
             if options == 1:
-                
-                display_word()
                 break    
             elif options == 2:
-                
+                clear_screen()
                 instructions()
                 break    
             else:
                 print('Invalid input.\n')
-                continue
         except ValueError:
-            print('Invalid input.\n')
-            continue          
+            print('Invalid input.\n')    
 
 def instructions():
     """
@@ -53,16 +54,9 @@ def instructions():
     back = input('Press 1 to go back to menu: ')
     if back == '1':
         clear_screen()
-        return splash_screen()
+        return main_menu()
     else:
         print('Invalid input. Press 1 to go back to menu.')        
-    
-def get_word():
-    """
-    Generates a random word from the list_of_words.
-    """
-    word = random.choice(list_of_words)
-    return word
 
 def display_word(word, guessed_letters):
     """
@@ -80,6 +74,7 @@ def display_word(word, guessed_letters):
                    
 
 def main():
-    splash_screen()
+    main_menu()
+    
 
 main()         
