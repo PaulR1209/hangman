@@ -19,19 +19,24 @@ def splash_screen():
                                                                 
     """)
 
-    options = input('Press 1 to start game. Press 2 for instructions: ')
-
-    if options.isdigit():
-        choice = int(options)
-        if choice == '1':
-            pass
-        elif options == '2':
+    while True:
+        try:
+            options = int(input('Press 1 to start game. Press 2 for instructions: '))
             clear_screen()
-            return instructions()
-        else:
-         print('Invalid input. Press 1 to start, or press 2 for instructions.')
-    else:
-        print('Invalid input. Please enter a number (1 or 2)')          
+            if options == 1:
+                
+                display_word()
+                break    
+            elif options == 2:
+                
+                instructions()
+                break    
+            else:
+                print('Invalid input.\n')
+                continue
+        except ValueError:
+            print('Invalid input.\n')
+            continue          
 
 def instructions():
     """
@@ -57,7 +62,22 @@ def get_word():
     Generates a random word from the list_of_words.
     """
     word = random.choice(list_of_words)
-    return word               
+    return word
+
+def display_word(word, guessed_letters):
+    """
+    Displays the hidden word. Unguessed letters will be displayed as an
+    underscore. Guessed letters will be revealed.
+    """
+    secret_word = []
+    for letter in word:
+        if letter in guessed_letters:
+            secret_word.append(letter)
+        else:
+            secret_word.append('_')
+    
+    return ''.join(secret_word)           
+                   
 
 def main():
     splash_screen()
