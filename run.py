@@ -1,5 +1,12 @@
 import random
+import os
 from words import list_of_words
+
+def clear_screen():
+    """
+    Clears screen after each input
+    """
+    os.system('cls' if os.name == 'nt' else 'clear')
 
 def splash_screen():
     print(r"""
@@ -14,8 +21,9 @@ def splash_screen():
 
     options = input('Press 1 to start game. Press 2 for instructions.')
     if options == '1':
-        return display_word(word, user_input)
+        pass
     elif options == '2':
+        clear_screen()
         return instructions()
     else:
          print('Invalid input. Press 1 to start, or press 2 for instructions')      
