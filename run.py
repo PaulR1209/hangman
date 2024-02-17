@@ -12,7 +12,7 @@ def get_word():
     return word
 
 lives = 7
-guessed_letters = ''
+guessed_letter_list = ''
 
 def clear_screen():
     """
@@ -62,11 +62,17 @@ def instructions():
     else:
         print('Invalid input. Press 1 to go start game.')        
 
-def display_word(hidden_word):
+def display_word(hidden_word, guessed_letter_list):
     """
-    Displays the hidden word as underscores.
+    Displays hidden word with correct guesses revealed
     """
-    print('_ '*len(hidden_word))
+    display = ''
+    for letter in hidden_word:
+        if letter in guessed_letter_list:
+            display += letter + ''
+        else:
+            display += '_ '
+    print(display)        
 
 def guessed_letter():
     """
@@ -74,11 +80,15 @@ def guessed_letter():
     """
     try:
         guess = input('Type a letter to make a guess: ')
-        if len(guess) != 1 or not guess.alpha():
+        if len(guess) != 1 or not guess.isalpha():
             raise InvalidGuessError('Only single letters allowed.')
+        return guess.lower()    
     except InvalidGuessError as e:
         print(e)
-        return guessed_letter()        
+        return guessed_letter()
+    else:
+        print(f'You guessed {guess}.')
+        # need to end loop upon correct input
 
 def run_game():
 
