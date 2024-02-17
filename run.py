@@ -81,20 +81,24 @@ def guessed_letter():
     try:
         guess = input('Type a letter to make a guess: ')
         if len(guess) != 1 or not guess.isalpha():
-            raise InvalidGuessError('Only single letters allowed.')
+            raise ValueError('Only single letters allowed.')
         return guess.lower()    
-    except InvalidGuessError as e:
+        
+        if guess in guessed_letter_list():
+            raise ValueError('You have already guessed this letter. Try again.')
+    except ValueError as e:
         print(e)
-        return guessed_letter()
-    else:
-        print(f'You guessed {guess}.')
+        return guessed_letter()            
         # need to end loop upon correct input
+        # and add valid input to guessed letter list
+        # if letter is already in list, raise error
 
 def run_game():
 
     remaining_attempts = 7
     hidden_word = get_word()
     print(hangman_stages(remaining_attempts))
+    guessed_letter()
     display_word(hidden_word)
 
 main_menu()
