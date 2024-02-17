@@ -37,9 +37,11 @@ def main_menu():
                 instructions()
                 break    
             else:
-                print('Invalid input.\n')
-        except ValueError:
-              print('Invalid input.\n')    
+                raise ValueError ('Only 1 or 2 are allowed, try again.')
+        except ValueError as e:
+              clear_screen()  
+              print(e)
+              return main_menu()    
 
 def instructions():
     """
@@ -53,22 +55,34 @@ def instructions():
     print('Choose your letters wisely, you have 7 lives!\n')
     print('The game ends when you either guess the correct word or you run out of lives.\n')
 
-    back = input('Press 1 to go back to menu: ')
-    if back == '1':
+    start_game = input('Press 1 to go start the game: ')
+    if start_game == '1':
         clear_screen()
-        return main_menu()
+        run_game()
     else:
-        print('Invalid input. Press 1 to go back to menu.')        
+        print('Invalid input. Press 1 to go start game.')        
 
 def display_word(hidden_word):
     """
     Displays the hidden word as underscores.
     """
-    print('_ '*len(hidden_word))          
+    print('_ '*len(hidden_word))
+
+def guessed_letter():
+    """
+    Asks the user to guess and input a letter
+    """
+    try:
+        guess = input('Type a letter to make a guess: ')
+        if len(guess) != 1 or not guess.alpha():
+            raise InvalidGuessError('Only single letters allowed.')
+    except InvalidGuessError as e:
+        print(e)
+        return guessed_letter()        
 
 def run_game():
 
-    remaining_attempts = 5
+    remaining_attempts = 7
     hidden_word = get_word()
     print(hangman_stages(remaining_attempts))
     display_word(hidden_word)
