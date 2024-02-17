@@ -37,7 +37,7 @@ def main_menu():
             else:
                 print('Invalid input.\n')
         except ValueError:
-85            print('Invalid input.\n')    
+              print('Invalid input.\n')    
 
 def instructions():
     """
@@ -58,23 +58,19 @@ def instructions():
     else:
         print('Invalid input. Press 1 to go back to menu.')        
 
-def display_word(word, guessed_letters):
+def display_word(hidden_word):
     """
-    Displays the hidden word. Unguessed letters will be displayed as an
-    underscore. Guessed letters will be revealed.
+    Displays the hidden word as underscores.
     """
-    secret_word = []
-    for letter in word:
-        if letter in guessed_letters:
-            secret_word.append(letter)
-        else:
-            secret_word.append('_')
-    
-    return ''.join(secret_word)           
-                   
+    print('_ '*len(hidden_word))          
 
 def main():
     main_menu()
     
 
-main()         
+main()
+
+remaining_attempts = 5
+hidden_word = get_word()
+print(hangman_stages(remaining_attempts))
+display_word(hidden_word)
