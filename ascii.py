@@ -49,7 +49,7 @@ def hangman_stages(remaining_attempts):
       +---+
       |   |
       O   |
-    /|   |
+     /|   |
           |
           |
     =========
@@ -58,7 +58,7 @@ def hangman_stages(remaining_attempts):
       +---+
       |   |
       O   |
-    /|\  |
+     /|\  |
           |
           |
     =========
@@ -67,8 +67,8 @@ def hangman_stages(remaining_attempts):
       +---+
       |   |
       O   |
-    /|\  |
-    /    |
+     /|\  |
+     /    |
           |
     =========
     """,
@@ -76,8 +76,8 @@ def hangman_stages(remaining_attempts):
       +---+
       |   |
       O   |
-    /|\  |
-    / \  |
+     /|\  |
+     / \  |
           |
     =========
     """]
