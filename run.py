@@ -29,6 +29,8 @@ def main_menu():
             options = int(input('Press 1 to start game. Press 2 for instructions: '))
 
             if options == 1:
+                clear_screen()
+                run_game()
                 break    
             elif options == 2:
                 clear_screen()
@@ -64,13 +66,11 @@ def display_word(hidden_word):
     """
     print('_ '*len(hidden_word))          
 
-def main():
-    main_menu()
-    
+def run_game():
 
-main()
+    remaining_attempts = 5
+    hidden_word = get_word()
+    print(hangman_stages(remaining_attempts))
+    display_word(hidden_word)
 
-remaining_attempts = 5
-hidden_word = get_word()
-print(hangman_stages(remaining_attempts))
-display_word(hidden_word)
+main_menu()
