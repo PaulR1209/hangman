@@ -37,7 +37,7 @@ def main_menu():
             else:
                 print('Invalid input.\n')
         except ValueError:
-            print('Invalid input.\n')    
+85            print('Invalid input.\n')    
 
 def instructions():
     """
