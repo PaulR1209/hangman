@@ -101,7 +101,7 @@ def hangman_stages(remaining_attempts):
 
     return stages.get(remaining_attempts)
 
-    winner_ascii = f"""{Fore.GREEN}
+winner_ascii = f"""{Fore.GREEN}
 
       
  ██████  ██████  ███    ██  ██████  ██████   █████  ████████ ██    ██ ██       █████  ████████ ██  ██████  ███    ██ ███████ ██ 
@@ -120,7 +120,7 @@ def hangman_stages(remaining_attempts):
                                                                                                                                 
 {Fore.RESET}"""
 
-loser_ascii f"""{Fore.RED}
+loser_ascii = f"""{Fore.RED}
 
 ██    ██ ███    ██ ██      ██    ██  ██████ ██   ██ ██    ██           
 ██    ██ ████   ██ ██      ██    ██ ██      ██  ██   ██  ██            

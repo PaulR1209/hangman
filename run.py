@@ -2,8 +2,8 @@ import random
 import os
 from colorama import Fore, init
 from words import list_of_words
-from ascii import splash_screen
-from ascii import hangman_stages
+from ascii import splash_screen, winner_ascii, loser_ascii, quit_ascii, hangman_stages
+
 
 init()
 # Initialise Colorama
@@ -107,7 +107,20 @@ def guessed_letter():
         return guess
     except ValueError as e:
         print(e)
-        return guessed_letter()            
+        return guessed_letter()
+
+def reset_game():
+    clear_screen()
+    global remaining_attempts
+    global guessed_letter_list
+    remaining_attempts = 7
+    guessed_letter_list = []
+    run_game()
+
+def quit_game():
+
+    clear_screen()
+    print(quit_ascii)                    
 
 def run_game():
     """
@@ -135,18 +148,26 @@ def run_game():
         else:
             remaining_attempts -= 1
             result_message = f'{Fore.RED}Unlucky! {guess} is not in the word{Fore.RESET}'
-        
+
         if '_' not in display:
+            clear_screen()
             print(winner_ascii)
-            print(f'{Fore.YELLOW}\nCongratulations! You win!{Fore.RESET}')
-            break
+            play_again = input('Press 1 to play again or press any key to quit: ')
+            if play_again == '1':
+                reset_game()
+            else:
+                return quit_game()
             # bug upon winning. requires another input to 
             # display winning message and break
 
         if remaining_attempts == 0:
-            print(f'{Fore.RED}\nYou lost the game, the word is {hidden_word}.{Fore.RESET}')
-            break
-
-        # add reset or quit game function
+            clear_screen()
+            print(loser_ascii)
+            print(f'{Fore.RED}\nThe word is {hidden_word}.{Fore.RESET}')
+            play_again = input('Press 1 to play again or press any key to quit: ')
+            if play_again == '1':
+                reset_game()
+            else:
+                return quit_game()
 
 main_menu()
