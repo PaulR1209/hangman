@@ -1,4 +1,9 @@
-splash_screen = """
+from colorama import Fore, init
+
+init()
+# Initialise Colorama
+
+splash_screen = f"""{Fore.YELLOW}
 
 ██     ██ ███████ ██       ██████  ██████  ███    ███ ███████                         
 ██     ██ ██      ██      ██      ██    ██ ████  ████ ██                              
@@ -15,7 +20,7 @@ splash_screen = """
                                                                                       
                                                                                       
 
-"""
+{Fore.RESET}"""
 
 def hangman_stages(remaining_attempts):
 
@@ -95,3 +100,5 @@ def hangman_stages(remaining_attempts):
     }
 
     return stages.get(remaining_attempts)
+
+    

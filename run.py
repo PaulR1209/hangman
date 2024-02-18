@@ -6,6 +6,7 @@ from ascii import splash_screen
 from ascii import hangman_stages
 
 init()
+# Initialise Colorama
 
 def get_word():
     """
@@ -24,6 +25,10 @@ def clear_screen():
     os.system('cls' if os.name == 'nt' else 'clear')
 
 def main_menu():
+    """
+    This is the start screen where you have the option
+    to start the game or read the instructions
+    """
 
     print(splash_screen)
 
@@ -105,6 +110,9 @@ def guessed_letter():
         return guessed_letter()            
 
 def run_game():
+    """
+    Runs the game logic
+    """
 
     remaining_attempts = 7
     hidden_word = get_word()
