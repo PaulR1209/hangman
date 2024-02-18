@@ -78,7 +78,7 @@ def display_word(hidden_word, guessed_letter_list):
             display += letter + ''
         else:
             display += '_ '
-    print(display)        
+    return display        
 
 def guessed_letter():
     """
@@ -105,8 +105,25 @@ def run_game():
 
     remaining_attempts = 7
     hidden_word = get_word()
-    print(hangman_stages(remaining_attempts))
-    guessed_letter()
-    display_word(hidden_word)
+
+    while remaining_attempts > 0:
+        clear_screen()
+        print(hangman_stages(remaining_attempts))
+        display = display_word(hidden_word, guessed_letter_list)
+        print(display)
+
+        if '_' not in display:
+            print('You guessed the word')
+            break
+
+        guess = guessed_letter()
+
+        if guess not in hidden_word:
+            remaining_attempts -= 1
+            print('wrong guess')
+
+        if remaining_attempts == 0:
+            print('you lose')
+            break    
 
 main_menu()
