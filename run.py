@@ -137,6 +137,7 @@ def run_game():
             result_message = f'{Fore.RED}Unlucky! {guess} is not in the word{Fore.RESET}'
         
         if '_' not in display:
+            print(winner_ascii)
             print(f'{Fore.YELLOW}\nCongratulations! You win!{Fore.RESET}')
             break
             # bug upon winning. requires another input to 
