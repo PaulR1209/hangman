@@ -2,11 +2,17 @@ import random
 import os
 from colorama import Fore, init
 from words import list_of_words
-from ascii import splash_screen, winner_ascii, loser_ascii, quit_ascii, hangman_stages
-
+from ascii import (
+    splash_screen,
+    winner_ascii,
+    loser_ascii,
+    quit_ascii,
+    hangman_stages
+)
 
 init()
 # Initialise Colorama
+
 
 def get_word():
     """
@@ -15,14 +21,17 @@ def get_word():
     word = random.choice(list_of_words)
     return word
 
+
 lives = 7
 guessed_letter_list = []
+
 
 def clear_screen():
     """
     Clears screen after each input
     """
     os.system('cls' if os.name == 'nt' else 'clear')
+
 
 def main_menu():
     """
@@ -34,22 +43,27 @@ def main_menu():
 
     while True:
         try:
-            options = int(input('Press 1 to start game. Press 2 for instructions: '))
+            options = int(input('Press 1 to start game. '
+                                'Press 2 for instructions: '))
 
             if options == 1:
                 clear_screen()
                 run_game()
-                break    
+                break
             elif options == 2:
                 clear_screen()
                 instructions()
-                break    
+                break
             else:
-                raise ValueError (f'{Fore.RED}Only 1 or 2 are allowed, try again.{Fore.RESET}')
+                raise ValueError(
+                    f'{Fore.RED}Only 1 or 2 are allowed, '
+                    'try again.{Fore.RESET}'
+                    )
         except ValueError as e:
-              clear_screen()  
-              print(e)
-              return main_menu()    
+            clear_screen()
+            print(e)
+            return main_menu()
+
 
 def instructions():
     """
@@ -58,23 +72,28 @@ def instructions():
     """
     print('Thank you for choosing to play Hangman!\n')
     print('The objective of the game is simple!\n')
-    print('It is to guess what the hidden word is before the stick figure is hung.\n')
+    print('It is to guess what the hidden word is '
+          'before the stick figure is hung.\n')
     print('Start guessing letters when prompted')
     print('Choose your guesses wisely, you have 7 lives!\n')
-    print('The game ends when you either guess the correct word or you run out of lives.\n')
+    print('The game ends when you either guess the correct word '
+          'or you run out of lives.\n')
 
     try:
         start_game = input('Press 1 to start the game: ')
-        
+
         if start_game == '1':
             clear_screen()
             run_game()
         else:
-            raise ValueError (f'{Fore.RED}Invalid input. Press 1 to go start game.\n{Fore.RESET}')
+            raise ValueError(
+                f'{Fore.RED}Invalid input. '
+                'Press 1 to go start game.\n{Fore.RESET}')
     except ValueError as e:
         clear_screen()
         print(e)
-        return instructions()                
+        return instructions()
+
 
 def display_word(hidden_word, guessed_letter_list):
     """
@@ -86,7 +105,8 @@ def display_word(hidden_word, guessed_letter_list):
             display += letter + ''
         else:
             display += '_ '
-    return display        
+    return display
+
 
 def guessed_letter():
     """
@@ -95,10 +115,13 @@ def guessed_letter():
     try:
         guess = input('Type a letter to make a guess: ').lower()
         if len(guess) != 1 or not guess.isalpha():
-            raise ValueError(f'{Fore.RED}Only single letters allowed.{Fore.RESET}')  
-        
+            raise ValueError(
+                f'{Fore.RED}Only single letters allowed.{Fore.RESET}')
+
         if guess in guessed_letter_list:
-            raise ValueError(f'{Fore.RED}You have already guessed this letter. Try again.{Fore.RESET}')
+            raise ValueError(
+                f'{Fore.RED}You have already guessed this letter. '
+                'Try again.{Fore.RESET}')
             # need to figure out how to not have
             # error messages run down the screen
         else:
@@ -108,6 +131,7 @@ def guessed_letter():
     except ValueError as e:
         print(e)
         return guessed_letter()
+
 
 def reset_game():
     """
@@ -120,13 +144,15 @@ def reset_game():
     guessed_letter_list = []
     run_game()
 
+
 def quit_game():
     """
     Quits the game and prints a thank you
     for playing message upon user input
     """
     clear_screen()
-    print(quit_ascii)                    
+    print(quit_ascii)
+
 
 def run_game():
     """
@@ -143,26 +169,33 @@ def run_game():
         print(f'Lives: {remaining_attempts}\n')
         print(result_message)
         print(hangman_stages(remaining_attempts))
-        
+
         display = display_word(hidden_word, guessed_letter_list)
         print(f'{display}\n')
 
         guess = guessed_letter()
 
         # Checks whether user guessed correctly or incorrectly
-        # Displays message to tell user and adjusts remaining attempts accordingly
+        # Displays message to tell user
+        # and adjusts remaining attempts accordingly
         if guess in hidden_word:
-            result_message = f'{Fore.GREEN}Well done! {guess} is in the word.{Fore.RESET}'
+            result_message = (
+                f'{Fore.GREEN}Well done! {guess} is in the word.{Fore.RESET}'
+                )
         else:
             remaining_attempts -= 1
-            result_message = f'{Fore.RED}Unlucky! {guess} is not in the word{Fore.RESET}'
+            result_message = (
+                f'{Fore.RED}Unlucky! {guess} is not in the word{Fore.RESET}'
+            )
 
         # Checks if user won
         # Gives user option to restart or quit if true
         if '_' not in display:
             clear_screen()
             print(winner_ascii)
-            play_again = input('Press 1 to play again or press any key to quit: ')
+            play_again = input(
+                'Press 1 to play again or press any key to quit: '
+                    )
             if play_again == '1':
                 reset_game()
             else:
@@ -175,11 +208,14 @@ def run_game():
             clear_screen()
             print(loser_ascii)
             print(f'{Fore.RED}\nThe word is {hidden_word}.{Fore.RESET}')
-            play_again = input('Press 1 to play again or press any key to quit: ')
+            play_again = input(
+                'Press 1 to play again or press any key to quit: '
+                    )
             if play_again == '1':
                 reset_game()
             else:
                 return quit_game()
+
 
 # Calls the main menu. Everything else is called from main menu
 main_menu()
