@@ -52,7 +52,7 @@ def instructions():
     print('The objective of the game is simple!\n')
     print('It is to guess what the hidden word is before the stick figure is hung.\n')
     print('Start guessing letters when prompted')
-    print('Choose your letters wisely, you have 7 lives!\n')
+    print('Choose your guesses wisely, you have 7 lives!\n')
     print('The game ends when you either guess the correct word or you run out of lives.\n')
 
     try:
@@ -91,7 +91,8 @@ def guessed_letter():
         
         if guess in guessed_letter_list:
             raise ValueError('You have already guessed this letter. Try again.')
-
+            # need to figure out how to not have
+            # error messages run down the screen
         else:
             guessed_letter_list.append(guess)
 
@@ -127,6 +128,8 @@ def run_game():
         if '_' not in display:
             print('\nCongratulations! You win!')
             break
+            # bug upon winning. requires another input to 
+            # display winning message and break
 
         if remaining_attempts == 0:
             print(f'\nYou lost the game, the word is {hidden_word}.')
