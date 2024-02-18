@@ -97,7 +97,6 @@ def guessed_letter():
 
         return guess
     except ValueError as e:
-        clear_screen()
         print(e)
         return guessed_letter()            
 
@@ -105,25 +104,32 @@ def run_game():
 
     remaining_attempts = 7
     hidden_word = get_word()
+    result_message = ''
 
     while remaining_attempts > 0:
         clear_screen()
+        print('Lets play!\n')
+        print(f'Lives: {remaining_attempts}\n')
+        print(result_message)
         print(hangman_stages(remaining_attempts))
+        
         display = display_word(hidden_word, guessed_letter_list)
-        print(display)
-
-        if '_' not in display:
-            print('You guessed the word')
-            break
+        print(f'{display}\n')
 
         guess = guessed_letter()
 
-        if guess not in hidden_word:
+        if guess in hidden_word:
+            result_message = f'Well done! {guess} is in the word.'
+        else:
             remaining_attempts -= 1
-            print('wrong guess')
+            result_message = f'Unlucky! {guess} is not in the word'
+        
+        if '_' not in display:
+            print('\nCongratulations! You win!')
+            break
 
         if remaining_attempts == 0:
-            print('you lose')
+            print(f'\nYou lost the game, the word is {hidden_word}.')
             break    
 
 main_menu()
