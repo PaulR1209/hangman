@@ -55,12 +55,18 @@ def instructions():
     print('Choose your letters wisely, you have 7 lives!\n')
     print('The game ends when you either guess the correct word or you run out of lives.\n')
 
-    start_game = input('Press 1 to go start the game: ')
-    if start_game == '1':
+    try:
+        start_game = input('Press 1 to start the game: ')
+        
+        if start_game == '1':
+            clear_screen()
+            run_game()
+        else:
+            raise ValueError ('Invalid input. Press 1 to go start game.\n')
+    except ValueError as e:
         clear_screen()
-        run_game()
-    else:
-        print('Invalid input. Press 1 to go start game.')        
+        print(e)
+        return instructions()                
 
 def display_word(hidden_word, guessed_letter_list):
     """
