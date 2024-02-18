@@ -12,7 +12,7 @@ def get_word():
     return word
 
 lives = 7
-guessed_letter_list = ''
+guessed_letter_list = []
 
 def clear_screen():
     """
@@ -85,19 +85,21 @@ def guessed_letter():
     Asks the user to guess and input a letter
     """
     try:
-        guess = input('Type a letter to make a guess: ')
+        guess = input('Type a letter to make a guess: ').lower()
         if len(guess) != 1 or not guess.isalpha():
-            raise ValueError('Only single letters allowed.')
-        return guess.lower()    
+            raise ValueError('Only single letters allowed.')  
         
-        if guess in guessed_letter_list():
+        if guess in guessed_letter_list:
             raise ValueError('You have already guessed this letter. Try again.')
+
+        else:
+            guessed_letter_list.append(guess)
+
+        return guess
     except ValueError as e:
+        clear_screen()
         print(e)
         return guessed_letter()            
-        # need to end loop upon correct input
-        # and add valid input to guessed letter list
-        # if letter is already in list, raise error
 
 def run_game():
 
