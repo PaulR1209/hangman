@@ -121,7 +121,7 @@ def guessed_letter():
         if guess in guessed_letter_list:
             raise ValueError(
                 f'{Fore.RED}You have already guessed this letter. '
-                'Try again.{Fore.RESET}')
+                f'Try again.{Fore.RESET}')
             # need to figure out how to not have
             # error messages run down the screen
         else:
