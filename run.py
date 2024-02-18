@@ -110,6 +110,9 @@ def guessed_letter():
         return guessed_letter()
 
 def reset_game():
+    """
+    resets the game upon user input
+    """
     clear_screen()
     global remaining_attempts
     global guessed_letter_list
@@ -118,7 +121,10 @@ def reset_game():
     run_game()
 
 def quit_game():
-
+    """
+    Quits the game and prints a thank you
+    for playing message upon user input
+    """
     clear_screen()
     print(quit_ascii)                    
 
@@ -126,11 +132,11 @@ def run_game():
     """
     Runs the game logic
     """
-
     remaining_attempts = 7
     hidden_word = get_word()
     result_message = ''
 
+    # Displays the game as long as user has not won or lost
     while remaining_attempts > 0:
         clear_screen()
         print('Lets play!\n')
@@ -143,12 +149,16 @@ def run_game():
 
         guess = guessed_letter()
 
+        # Checks whether user guessed correctly or incorrectly
+        # Displays message to tell user and adjusts remaining attempts accordingly
         if guess in hidden_word:
             result_message = f'{Fore.GREEN}Well done! {guess} is in the word.{Fore.RESET}'
         else:
             remaining_attempts -= 1
             result_message = f'{Fore.RED}Unlucky! {guess} is not in the word{Fore.RESET}'
 
+        # Checks if user won
+        # Gives user option to restart or quit if true
         if '_' not in display:
             clear_screen()
             print(winner_ascii)
@@ -157,9 +167,10 @@ def run_game():
                 reset_game()
             else:
                 return quit_game()
-            # bug upon winning. requires another input to 
-            # display winning message and break
+            # bug upon winning. requires another input to print winner ascii
 
+        # Checks if user lost
+        # Gives user option to restart or quit if true
         if remaining_attempts == 0:
             clear_screen()
             print(loser_ascii)
@@ -170,4 +181,5 @@ def run_game():
             else:
                 return quit_game()
 
+# Calls the main menu. Everything else is called from main menu
 main_menu()
