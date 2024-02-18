@@ -1,8 +1,11 @@
 import random
 import os
+from colorama import Fore, init
 from words import list_of_words
 from ascii import splash_screen
 from ascii import hangman_stages
+
+init()
 
 def get_word():
     """
@@ -37,7 +40,7 @@ def main_menu():
                 instructions()
                 break    
             else:
-                raise ValueError ('Only 1 or 2 are allowed, try again.')
+                raise ValueError (f'{Fore.RED}Only 1 or 2 are allowed, try again.{Fore.RESET}')
         except ValueError as e:
               clear_screen()  
               print(e)
@@ -62,7 +65,7 @@ def instructions():
             clear_screen()
             run_game()
         else:
-            raise ValueError ('Invalid input. Press 1 to go start game.\n')
+            raise ValueError (f'{Fore.RED}Invalid input. Press 1 to go start game.\n{Fore.RESET}')
     except ValueError as e:
         clear_screen()
         print(e)
@@ -87,10 +90,10 @@ def guessed_letter():
     try:
         guess = input('Type a letter to make a guess: ').lower()
         if len(guess) != 1 or not guess.isalpha():
-            raise ValueError('Only single letters allowed.')  
+            raise ValueError(f'{Fore.RED}Only single letters allowed.{Fore.RESET}')  
         
         if guess in guessed_letter_list:
-            raise ValueError('You have already guessed this letter. Try again.')
+            raise ValueError(f'{Fore.RED}You have already guessed this letter. Try again.{Fore.RESET}')
             # need to figure out how to not have
             # error messages run down the screen
         else:
@@ -120,19 +123,21 @@ def run_game():
         guess = guessed_letter()
 
         if guess in hidden_word:
-            result_message = f'Well done! {guess} is in the word.'
+            result_message = f'{Fore.GREEN}Well done! {guess} is in the word.{Fore.RESET}'
         else:
             remaining_attempts -= 1
-            result_message = f'Unlucky! {guess} is not in the word'
+            result_message = f'{Fore.RED}Unlucky! {guess} is not in the word{Fore.RESET}'
         
         if '_' not in display:
-            print('\nCongratulations! You win!')
+            print(f'{Fore.YELLOW}\nCongratulations! You win!{Fore.RESET}')
             break
             # bug upon winning. requires another input to 
             # display winning message and break
 
         if remaining_attempts == 0:
-            print(f'\nYou lost the game, the word is {hidden_word}.')
-            break    
+            print(f'{Fore.RED}\nYou lost the game, the word is {hidden_word}.{Fore.RESET}')
+            break
+
+        # add reset or quit game function
 
 main_menu()
