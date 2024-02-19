@@ -44,7 +44,7 @@ def main_menu():
     while True:
         try:
             options = (input('Press 1 to start game. '
-                                'Press 2 for instructions: '))
+                             'Press 2 for instructions: '))
 
             if options == '1':
                 clear_screen()
@@ -59,7 +59,7 @@ def main_menu():
                     f'{Fore.RED}Only 1 or 2 are allowed, '
                     f'try again.{Fore.RESET}'
                     )
-                    
+
         except ValueError as e:
             clear_screen()
             print(e)
