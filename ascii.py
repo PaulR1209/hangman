@@ -6,9 +6,9 @@ init()
 splash_screen = f"""{Fore.YELLOW}
 
 
- _   _                                         
-| | | |                                        
-| |_| | __ _ _ __   __ _ _ __ ___   __ _ _ __  
+
+| | | |
+| |_| |
 |  _  |/ _` | '_ \ / _` | '_ ` _ \ / _` | '_ \ 
 | | | | (_| | | | | (_| | | | | | | (_| | | | |
 \_| |_/\__,_|_| |_|\__, |_| |_| |_|\__,_|_| |_|
@@ -17,6 +17,7 @@ splash_screen = f"""{Fore.YELLOW}
 
 
 {Fore.RESET}"""
+
 
 def hangman_stages(remaining_attempts):
 
@@ -97,6 +98,7 @@ def hangman_stages(remaining_attempts):
 
     return stages.get(remaining_attempts)
 
+
 winner_ascii = f"""{Fore.GREEN}
 
 
@@ -112,6 +114,7 @@ __   __            _    _ _       _
                             
 {Fore.RESET}"""
 
+
 loser_ascii = f"""{Fore.RED}
 
 
@@ -126,6 +129,7 @@ __   __            _
 
 
 {Fore.RESET}"""
+
 
 quit_ascii = f"""{Fore.YELLOW}
 
@@ -146,6 +150,7 @@ ______          ______ _             _             _
 \_| \___/|_|    \_|   |_|\__,_|\__, |_|_| |_|\__, (_)
                                 __/ |         __/ |  
                                |___/         |___/   
+
 
 
 {Fore.RESET}"""
