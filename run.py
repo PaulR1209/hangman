@@ -167,7 +167,7 @@ def run_game():
         clear_screen()
         print('Lets play!\n')
         print(f'Lives: {remaining_attempts}\n')
-        print(' '.join(guessed_letter_list))
+        print('Guessed Letters: ' + ' '.join(guessed_letter_list))
         print(result_message)
         print(hangman_stages(remaining_attempts))
 
