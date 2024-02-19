@@ -59,7 +59,7 @@ def main_menu():
                     f'{Fore.RED}Only 1 or 2 are allowed, '
                     f'try again.{Fore.RESET}'
                     )
-
+                    
         except ValueError as e:
             clear_screen()
             print(e)
