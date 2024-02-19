@@ -57,8 +57,10 @@ def main_menu():
             else:
                 raise ValueError(
                     f'{Fore.RED}Only 1 or 2 are allowed, '
-                    'try again.{Fore.RESET}'
+                    f'try again.{Fore.RESET}'
                     )
+                    # else statement only works 
+                    # for numbers that are not 1 or 2
         except ValueError as e:
             clear_screen()
             print(e)
@@ -88,7 +90,7 @@ def instructions():
         else:
             raise ValueError(
                 f'{Fore.RED}Invalid input. '
-                'Press 1 to go start game.\n{Fore.RESET}')
+                f'Press 1 to go start game.\n{Fore.RESET}')
     except ValueError as e:
         clear_screen()
         print(e)
