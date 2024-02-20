@@ -207,23 +207,30 @@ def run_game():
         if '_' not in display:
             clear_screen()
             print(winner_ascii)
+            
+            print('Press 1 to play again')
+            print('Press any key to quit\n')
+            
             play_again = input(
-                'Press 1 to play again or press any key to quit: '
+                'Enter your choice here: '
                     )
             if play_again == '1':
                 reset_game()
             else:
                 return quit_game()
-            # bug upon winning. requires another input to print winner ascii
 
         # Checks if user lost
         # Gives user option to restart or quit if true
         if remaining_attempts == 0:
             clear_screen()
             print(loser_ascii)
-            print(f'{Fore.RED}\nThe word is {hidden_word}.{Fore.RESET}')
+            print(f'{Fore.RED}\nThe word is {hidden_word}.{Fore.RESET}\n')
+
+            print('Press 1 to play again')
+            print('Press any key to quit\n')
+
             play_again = input(
-                'Press 1 to play again or press any key to quit: '
+                'Enter your choice here: '
                     )
             if play_again == '1':
                 reset_game()
