@@ -16,4 +16,4 @@ My Hangman game is a Python terminal game that runs on Heroku. The aim of the ga
 
 ## Game Design
 
-(flow chart screen shot)
+<img src='/screenshots/flow-chart.png'>
