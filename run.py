@@ -43,8 +43,10 @@ def main_menu():
 
     while True:
         try:
-            options = (input('Press 1 to start game. '
-                             'Press 2 for instructions: '))
+            print('Press 1 to start game')
+            print('press 2 to read instructions\n')
+
+            options = (input('Enter your choice here: '))
 
             if options == '1':
                 clear_screen()
@@ -81,11 +83,17 @@ def instructions():
           'or you run out of lives.\n')
 
     try:
-        start_game = input('Press 1 to start the game: ')
+        print('Press 1 to start game')
+        print('Press 2 to quit\n')
+
+        start_game = input('Enter your choice here: ')
 
         if start_game == '1':
             clear_screen()
             run_game()
+        elif start_game == '2':
+            clear_screen()
+            print(quit_ascii)
         else:
             raise ValueError(
                 f'{Fore.RED}Invalid input. '
