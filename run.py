@@ -115,7 +115,7 @@ def display_word(hidden_word, guessed_letter_list):
     display = ''
     for letter in hidden_word:
         if letter in guessed_letter_list:
-            display += letter + ''
+            display += letter + ' '
         else:
             display += '_ '
     return display
@@ -135,8 +135,6 @@ def guessed_letter():
             raise ValueError(
                 f'{Fore.RED}You have already guessed this letter. '
                 f'Try again.{Fore.RESET}')
-            # need to figure out how to not have
-            # error messages run down the screen
         else:
             guessed_letter_list.append(guess)
 
@@ -201,6 +199,8 @@ def run_game():
             result_message = (
                 f'{Fore.RED}Unlucky! {guess} is not in the word{Fore.RESET}'
             )
+
+        display = display_word(hidden_word, guessed_letter_list)
 
         # Checks if user won
         # Gives user option to restart or quit if true
