@@ -38,13 +38,13 @@ I have color coded all of my errors to red, so it catches the users eye.
 
 ### Instructions
 
-This is the instructions for the game. The user can press 1 to start the game once they are finished reading.
+This is the instructions for the game. The user can either press 1 to start the game once they are finished reading, or press 2 to go back to the main menu, or press 3 to quit, which will take you to the quit screen referenced further down.
 
 <img src='/screenshots/instructions.png'>
 
 #### Instructions Error
 
-This error is displayed upon pressing any other key, other than 1.
+This error is displayed upon pressing any other key, other than 1, 2 or 3.
 
 <img src='/screenshots/instructions-error.png'>
 

@@ -101,7 +101,7 @@ def instructions():
         else:
             raise ValueError(
                 f'{Fore.RED}Invalid input. '
-                f'Press 1 to go start game.\n{Fore.RESET}')
+                f'Choose either 1, 2 or 3 from the menu below\n{Fore.RESET}')
     except ValueError as e:
         clear_screen()
         print(e)
