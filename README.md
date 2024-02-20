@@ -76,7 +76,7 @@ When user guesses incorrectly, the remaining lives go down, the hangman image up
 
 #### Invalid User Inputs
 
-When the user types in more than one character, or a key that us not a letter, or the letter has already been guessed, user will get one of two error messages.
+When the user types in more than one character, or a key that is not a letter, or the letter has already been guessed, user will get one of two error messages.
 
 <img src='/screenshots/game-error.png'>
 
@@ -85,6 +85,8 @@ When the user types in more than one character, or a key that us not a letter, o
 #### Game Result
 
 Upon winning or losing, the user is greeted with a message to confirm result, and is prompted to either restart game, or quit.
+
+When you lose, the hidden word will be revealed in red so user can clearly see.
 
 <img src='/screenshots/win.png'>
 
@@ -95,3 +97,45 @@ Upon winning or losing, the user is greeted with a message to confirm result, an
 Upon choosing to quit, user is greeted with a thank you for playing message.
 
 <img src='/screenshots/game-over.png'>
+
+## Technologies
+
+* This game is all written in Python
+* The IDE used is Gitpod with Code Institute template
+* I used Heroku to deploy my project
+* Git has been used to commit, push and store to GitHub
+* I used [This Webiste](https://patorjk.com/software/taag/#p=display&h=0&f=Doom&t=Hangman) to generate my ascii art messages.
+* I used ChatGPT to generate ascii art for my Hangman images
+
+## Testing
+
+Throughout writing this project, I regularly used the terminal to test my code. Everything currently works as expected.
+
+### Validator
+
+I ran my code through Code Institute Python Linter with no errors.
+
+<img src='/screenshots/validator.png'>
+
+## Bugs
+
+Although I have no bugs I am aware of, I did have a problem, where upon winning, guessing all letters in the word, I would have to input one more guess in order to display the winning screen.
+
+With help from my mentor, I discovered that I was not checking the hidden word after the user input, so when checking for a winner, it was not picking up that I had won.
+
+<img src='/screenshots/bug.png'>
+
+## Deployment
+
+I deployed my project to Heroku by following these steps:
+
+1. I created an account with Heroku
+2. I then clicked 'Create new app'
+3. I went into settings, and added Python and Node.js buildpacks in that order
+4. Then I connected my Github profile and selected my repository.
+5. Finally I deployed my page and enabled automatic deploys
+
+## Credits
+
+* I used https://codefather.tech/blog/hangman-game-python/ to understand the basic structure of a hangman game and took some inspiration from his code.
+* I used ChatGPT to write the clear screen function and also used this to get colorama working

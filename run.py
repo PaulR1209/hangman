@@ -207,10 +207,10 @@ def run_game():
         if '_' not in display:
             clear_screen()
             print(winner_ascii)
-            
+
             print('Press 1 to play again')
             print('Press any key to quit\n')
-            
+
             play_again = input(
                 'Enter your choice here: '
                     )
