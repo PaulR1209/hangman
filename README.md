@@ -48,3 +48,50 @@ This error is displayed upon pressing any other key, other than 1.
 
 <img src='/screenshots/instructions-error.png'>
 
+### Game
+
+#### Start Screen
+
+This is the opening display when you start the game:
+
+* Remaining lives
+* A list of guessed letters, which is currently empty
+* The Hangman image, which updates every time you lose a life.
+* The hidden word, which is displayed as underscores, and then gets revealed when letters are guessed correctly.
+* User input
+
+<img src='/screenshots/start-game.png'>
+
+#### Correct Guess
+
+When user guesses correctly, the letter is revealed in the word, and a green message pops up confirming the letter is in the word.
+
+<img src='/screenshots/correct-guess.png'>
+
+#### Incorrect Guess
+
+When user guesses incorrectly, the remaining lives go down, the hangman image updates, and you get a red message to confirm the letter is not in the word.
+
+<img src='/screenshots/incorrect-guess.png'>
+
+#### Invalid User Inputs
+
+When the user types in more than one character, or a key that us not a letter, or the letter has already been guessed, user will get one of two error messages.
+
+<img src='/screenshots/game-error.png'>
+
+<img src='/screenshots/already-guessed.png'>
+
+#### Game Result
+
+Upon winning or losing, the user is greeted with a message to confirm result, and is prompted to either restart game, or quit.
+
+<img src='/screenshots/win.png'>
+
+<img src='/screenshots/lose.png'>
+
+#### Quit Screen
+
+Upon choosing to quit, user is greeted with a thank you for playing message.
+
+<img src='/screenshots/game-over.png'>
