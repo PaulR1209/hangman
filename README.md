@@ -17,3 +17,34 @@ My Hangman game is a Python terminal game that runs on Heroku. The aim of the ga
 ## Game Design
 
 <img src='/screenshots/flow-chart.png'>
+
+## Features
+
+### Main Menu
+
+The main menu consists of a hangman logo ascii art, which has added color. To do this, I imported Colorama into my workspace.
+
+At the bottom you can choose to either start the game or read the instructions, by pressing either 1 or 2.
+
+<img src='/screenshots/main-menu.png'>
+
+#### Main Menu Error
+
+If you press any other key other than 1 or 2, an error is thrown and a message to the user is displayed in red at the top.
+
+I have color coded all of my errors to red, so it catches the users eye.
+
+<img src='/screenshots/main-menu-error.png'>
+
+### Instructions
+
+This is the instructions for the game. The user can press 1 to start the game once they are finished reading.
+
+<img src='/screenshots/instructions.png'>
+
+#### Instructions Error
+
+This error is displayed upon pressing any other key, other than 1.
+
+<img src='/screenshots/instructions-error.png'>
+
