@@ -84,7 +84,8 @@ def instructions():
 
     try:
         print('Press 1 to start game')
-        print('Press 2 to quit\n')
+        print('press 2 for main menu')
+        print('Press 3 to quit\n')
 
         start_game = input('Enter your choice here: ')
 
@@ -92,6 +93,9 @@ def instructions():
             clear_screen()
             run_game()
         elif start_game == '2':
+            clear_screen()
+            main_menu()
+        elif start_game == '3':
             clear_screen()
             print(quit_ascii)
         else:
