@@ -1,13 +1,13 @@
 # Project Portfolio 3: Hangman
 
-My Hangman game is a Python terminal game that runs on Heroku. The aim of the game is to guess the hidden word before the hangman image is completed.
+My Hangman game is a Python terminal game that runs on Heroku. The aim of the game is to guess the hidden word before the hangman image is completed. This game is targeted at people of any ages, who want to engage in a quick brainteaser.
 
 * Find the link to the game [here](https://hangman-pp3-2024-2fbba5f87d9d.herokuapp.com/)
 * The repository link is [here](https://github.com/PaulR1209/hangman)
 
 ## How to Play
 
-1. To start, there will be a hidden word displayed as underscores, with with an image of the Hangman, and the amount of lives you have.
+1. To start, there will be a hidden word displayed as underscores, with with an image of the Hangman, and the amount of lives you have. This hidden word is chosen at random from my words.py file. I was able to execute this by importing the random library.
 2. You will be prompted to guess a letter.
 3. If you guess correctly, the letter will be revealed in the relevant space. If you guess wrong, the hangman image will progress to the next stage, and you will lose a life.
 4. You win by guessing all letters correctly.
@@ -22,7 +22,7 @@ My Hangman game is a Python terminal game that runs on Heroku. The aim of the ga
 
 ### Main Menu
 
-The main menu consists of a hangman logo ascii art, which has added color. To do this, I imported Colorama into my workspace.
+The main menu consists of a hangman logo ascii art, which has added color. To do this, I imported the Colorama library into my workspace.
 
 At the bottom you can choose to either start the game or read the instructions, by pressing either 1 or 2.
 
@@ -53,6 +53,8 @@ This error is displayed upon pressing any other key, other than 1, 2 or 3.
 #### Start Screen
 
 This is the opening display when you start the game:
+
+After every input, the screen clears and refreshes. I imported the OS library in order that I could use my clear screen function.
 
 * Remaining lives
 * A list of guessed letters, which is currently empty
@@ -110,6 +112,16 @@ Upon choosing to quit, user is greeted with a thank you for playing message.
 ## Testing
 
 Throughout writing this project, I regularly used the terminal to test my code. Everything currently works as expected.
+
+What I tested:
+
+* In main menu and Instructions menu, I made sure I was able to move around, based on my menu choices.
+* I used invalid inputs to check if my error messaged were working, and if any unexpected errors came up.
+* When running the game, I checked for invalid inputs and unexpected errors the same as previous.
+* I played the game to win, to make sure the messages to the user were appearing, the letters had been revealed in the hidden word, and the winning message came up.
+* I then played to lose, to check if my lives were going down, the hangman stages were progressing, and the losing message came up.
+* Upon being prompted to either restart or quit, I again checked for errors by inputting an invalid key, and checked if the game would properly restart, and the game would move to the quit screen.
+* Finally upon putting my code through a validator, I manually edited my code to make it PEP8 standard.
 
 ### Validator
 
